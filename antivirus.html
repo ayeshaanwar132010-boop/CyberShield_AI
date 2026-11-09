@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="CyberShield AI antivirus: scan this PC for threats, quarantine them, clean junk files and speed up startup."><meta name="theme-color" content="#101329"><title>Antivirus &amp; PC Booster | CyberShield AI</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/futuristic.css"><link rel="stylesheet" href="assets/css/command-center.css"><link rel="stylesheet" href="assets/css/antivirus.css"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/img/icon.svg"><link rel="stylesheet" href="assets/css/consistent-theme.css">
+</head><body id="top"><header class="topbar"><nav class="nav wrap" aria-label="Main navigation"><a class="brand" href="index.html" aria-label="CyberShield AI home"><img class="brand-logo" src="assets/img/cybershield-wordmark.svg" alt="CyberShield AI — Secure Your Digital World. Powered by AI."></a><div class="nav-links" id="navLinks"><div class="nav-primary" aria-label="Primary sections">
+<a class="nav-link primary" href="index.html">Home</a>
+<a class="nav-link primary nav-featured" href="sentry.html"><i class="fa-solid fa-robot"></i> Cyber Robo Simulator</a>
+<a class="nav-link primary" href="scanner.html">Security Center</a>
+<a class="nav-link primary" href="dashboard.html">Investigation Lab</a>
+<a class="nav-link primary" href="learn.html">Learn & Tools</a>
+<a class="nav-link primary nav-featured" href="automation.html"><i class="fa-solid fa-gears"></i> Automation</a>
+<a class="nav-link primary nav-direct-tool" href="arena.html"><i class="fa-solid fa-cube"></i> 3D Arena</a>
+<a class="nav-link primary" href="image-inspector.html"><i class="fa-regular fa-image"></i> Image Inspector</a>
+</div><details class="nav-more"><summary>Other Tools <i class="fa-solid fa-chevron-down"></i></summary><div class="nav-more-menu"><a class="tool-highlight" href="arena.html"><i class="fa-solid fa-cube"></i> 3D Cyber Arena</a>
+<a href="antivirus.html">Antivirus</a><a href="scanner.html">Message & URL Scanner</a><a href="image-inspector.html">Image Authenticity Inspector</a><a href="gmail-shield.html">Gmail Shield</a><a href="arena.html">3D Cyber Arena</a><a href="games.html">Games & Challenges</a><a href="missions.html">Cyber Missions & XP</a><a href="courses.html">Cyber Academy</a><a href="reports.html">Security Reports</a><a href="ai-studio.html">AI Security Studio</a><a href="profile.html">Profile & Settings</a><a href="contact.html">Help & Contact</a>
+</div></details></div><div class="nav-actions"><a class="btn btn-small nav-cta" href="scanner.html">Run a scan <i class="fa-solid fa-arrow-right"></i></a><button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button></div></nav></header><main><section class="page-hero"><div class="wrap"><span class="eyebrow">Protect &amp; optimize / 03</span><h1>Antivirus &amp; <span class="accent">PC booster.</span></h1><p>Scan this PC for threats, move them to a safe vault, clean junk files and trim startup programs. Everything runs locally on your computer.</p></div></section>
+<section class="section"><div class="wrap">
+<div class="av-banner" id="avWeb" hidden><strong>Desktop app required.</strong> Scanning files and cleaning your PC needs the CyberShield AI Windows app, because a normal web page is not allowed to touch your files. Open this page inside the desktop app (run <code>RUN-DESKTOP-DEV-WINDOWS.bat</code> or install the built app).</div>
+<div class="av-grid">
+
+<section class="card"><span class="eyebrow">Protection status</span><h2>Windows Defender <span class="av-tag">REAL ENGINE</span></h2>
+<p>Windows already includes a professional antivirus. CyberShield can check it, update its definitions and start its scans for you.</p>
+<div id="defStatus" class="av-empty">Checking…</div>
+<div class="av-row" style="margin-top:14px"><button class="btn btn-small" id="defUpdate">Update definitions</button><button class="btn btn-outline btn-small" id="defQuick">Defender quick scan</button><button class="btn btn-outline btn-small" id="defFull">Defender full scan</button></div>
+<div id="defResult" class="av-empty" role="status" aria-live="polite"></div></section>
+
+<section class="card"><span class="eyebrow">System health</span><h2>PC health <span class="av-tag">REAL</span></h2>
+<div class="av-bars" id="healthBars"><div class="av-empty">Reading…</div></div>
+<div class="av-row" style="margin-top:16px"><button class="btn btn-outline btn-small" id="healthRefresh">Refresh</button><button class="btn btn-outline btn-small" id="openTaskMgr">Open Task Manager</button></div></section>
+
+<section class="card av-wide"><span class="eyebrow">Threat scanner</span><h2>Scan for viruses <span class="av-tag">REAL</span> <span class="av-tag">HEURISTIC</span></h2>
+<p>Checks files against known signatures and suspicious behaviour rules (disguised programs, double extensions, dangerous scripts, packed files). <strong>Quick</strong> covers Downloads, Desktop, Temp, AppData and Startup folders. <strong>Full</strong> covers your whole user profile. <strong>Custom</strong> lets you pick any folder or USB drive.</p>
+<div class="av-row"><button class="btn" id="scanQuick"><i class="fa-solid fa-bolt"></i> Quick scan</button><button class="btn btn-outline" id="scanFull"><i class="fa-solid fa-hard-drive"></i> Full scan</button><button class="btn btn-outline" id="scanCustom"><i class="fa-solid fa-folder-open"></i> Choose folder…</button><button class="btn btn-outline av-btn-danger" id="scanStop" hidden>Stop</button></div>
+<div class="av-progress" id="scanProgress" hidden><div id="scanCounts"></div><div class="av-indet"></div><div class="cur" id="scanCur"></div></div>
+<div id="scanSummary" role="status" aria-live="polite"></div>
+<div id="scanResults" class="av-list"></div>
+<div class="av-row" id="scanActions" style="margin-top:16px" hidden><button class="btn" id="quarSelected">Quarantine selected</button><button class="btn btn-outline btn-small" id="selRecommended">Select recommended</button><button class="btn btn-outline btn-small" id="selNone">Select none</button><button class="btn btn-outline btn-small" id="scanExport" disabled>Export report</button></div>
+<div class="notice" style="margin-top:20px">Heuristic results can be false alarms. Quarantine is reversible: files go to the vault, not the trash, and can be restored. Protected Windows system folders are skipped on Quick and Full scans.</div></section>
+
+<section class="card"><span class="eyebrow">Safe storage</span><h2>Quarantine vault</h2><p>Quarantined files cannot run. Restore a false alarm or delete a real threat forever.</p><div id="vaultList" class="av-list"><div class="av-empty">Vault is empty.</div></div></section>
+
+<section class="card"><span class="eyebrow">Make it faster</span><h2>Junk cleaner <span class="av-tag">REAL</span></h2>
+<p>Frees disk space by removing temporary files, crash dumps and browser caches. Documents, photos and downloads are never touched. Files used by running programs are skipped.</p>
+<div id="junkList" class="av-list"><div class="av-empty">Press “Find junk files”.</div></div>
+<div class="av-row" style="margin-top:14px"><button class="btn btn-small" id="junkScan">Find junk files</button><button class="btn btn-outline btn-small" id="junkClean" disabled>Clean selected</button></div>
+<div id="junkResult" class="av-empty" role="status" aria-live="polite"></div></section>
+
+<section class="card av-wide"><span class="eyebrow">Faster boot</span><h2>Startup programs <span class="av-tag">REAL</span></h2>
+<p>Programs that launch with Windows slow down start-up. Turn off the ones you do not need (you can turn them back on). Current-user items can be changed here; system-wide items are shown read-only (use Task Manager &gt; Startup for those).</p>
+<div id="startList" class="av-list"><div class="av-empty">Loading…</div></div></section>
+
+<section class="card av-wide"><span class="eyebrow">Demo &amp; tools</span><h2>Test the scanner safely</h2>
+<p>The EICAR file is a harmless industry-standard test file that every antivirus must detect. It contains no virus. Note: Windows Defender may remove it the moment it is created, which is a good sign that Defender works.</p>
+<div class="av-row"><button class="btn btn-small" id="makeTest">Create EICAR test file &amp; scan it</button><button class="btn btn-outline btn-small" id="importSigs">Import hash list…</button><span id="sigCount" class="av-empty"></span></div>
+<div id="toolResult" class="av-empty" role="status" aria-live="polite"></div></section>
+
+</div></div></section></main>
+<footer class="footer"><div class="wrap footer-inner"><span>© <span data-year></span> CyberShield AI. Learn to spot the signal.</span><span class="socials"><a href="learn.html">Learning lab</a><a href="scanner.html">Scanner</a><a href="contact.html">Contact</a><a href="#top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a></span></div></footer><button class="back-top" id="backTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button><div class="cursor-dot" aria-hidden="true"></div><div class="cursor-ring" aria-hidden="true"></div><div class="toast" id="toast" role="status" aria-live="polite"></div><script src="assets/js/main.js"></script><script src="assets/js/antivirus.js"></script><script src="assets/js/fx.js"></script><script src="assets/js/extras.js"></script></body></html>

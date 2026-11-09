@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Play Cyber Runner, a cyberpunk endless-runner arcade game inside CyberShield AI.">
+  <meta name="theme-color" content="#101329">
+  <title>Cyber Runner | CyberShield AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/futuristic.css"><link rel="stylesheet" href="assets/css/command-center.css">
+  <link rel="stylesheet" href="assets/css/cyber-runner.css">
+  <link rel="icon" href="assets/img/icon.svg">
+<link rel="stylesheet" href="assets/css/consistent-theme.css">
+</head>
+<body id="top">
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="CyberShield AI home"><img class="brand-logo" src="assets/img/cybershield-wordmark.svg" alt="CyberShield AI — Secure Your Digital World. Powered by AI."></a>
+      <div class="nav-links" id="navLinks"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="learn.html">Learn</a><a class="nav-link" href="scanner.html">Scanner</a><a class="nav-link" href="antivirus.html">Antivirus</a><a class="nav-link" href="dashboard.html">Dashboard</a><a class="nav-link" href="courses.html">Courses</a><a class="nav-link" href="arena.html">3D Arena</a><a class="nav-link" href="games.html">Games</a><a class="nav-link" href="cyber-runner.html">Cyber Runner</a><a class="nav-link" href="profile.html">Profile</a><a class="nav-link" href="contact.html">Contact</a></div>
+      <div class="nav-actions"><button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">☰</button></div>
+    </nav>
+  </header>
+  <main>
+    <section class="page-hero runner-hero"><div class="wrap"><span class="eyebrow">CYBER ARENA · ARCADE SIMULATION</span><h1>Run the <span class="accent">neon grid.</span></h1><p>Dodge security barriers, switch lanes, and collect data shards in a neon-soaked digital city. An original CyberShield arcade game.</p></div></section>
+    <section class="section runner-section"><div class="wrap runner-layout">
+      <section class="runner-panel" aria-label="Cyber Runner game">
+        <div class="runner-hud"><div><span class="hud-label">SCORE</span><strong id="scoreValue">000000</strong></div><div><span class="hud-label">DATA SHARDS</span><strong id="shardValue">0</strong></div><div><span class="hud-label">PERSONAL BEST</span><strong id="bestValue">0</strong></div></div>
+        <div class="runner-stage" id="runnerStage">
+          <canvas id="runnerCanvas" width="960" height="540" aria-label="Cyber Runner game field. Use arrow keys or the controls below to dodge obstacles and collect data shards." role="img"></canvas>
+          <div class="runner-overlay" id="runnerOverlay"><div class="overlay-card"><span class="overlay-kicker">SIMULATION READY</span><h2 id="overlayTitle">Cyber Runner <span class="accent">2077</span></h2><p id="overlayText">Three lanes. One mission. Don't let the grid catch you.</p><button class="btn" id="startButton" type="button">Start run <span aria-hidden="true">→</span></button><p class="overlay-hint">← → move · ↑ / Space jump · ↓ slide · P pause</p></div></div>
+          <div class="runner-paused" id="pausedBadge" hidden>PAUSED <span>· Press P to resume</span></div>
+        </div>
+        <div class="runner-controls" aria-label="Touch controls"><button type="button" data-action="left" aria-label="Move left">←</button><button type="button" data-action="jump" aria-label="Jump">↑ <small>JUMP</small></button><button type="button" data-action="slide" aria-label="Slide">↓ <small>SLIDE</small></button><button type="button" data-action="right" aria-label="Move right">→</button><button type="button" id="pauseButton" class="pause-control">Ⅱ <small>PAUSE</small></button></div>
+      </section>
+      <aside class="runner-sidebar">
+        <article class="card runner-info"><span class="eyebrow">MISSION BRIEF</span><h2>Survive the signal.</h2><p>Navigate a simulated neon transit grid. Each data shard adds to your score; every barrier tests your timing.</p><div class="mission-stat"><span>Difficulty</span><strong>Adaptive</strong></div><div class="mission-stat"><span>Mode</span><strong>Endless run</strong></div><div class="mission-stat"><span>Progress</span><strong>Saved on this device</strong></div></article>
+        <article class="card runner-info"><span class="eyebrow">CONTROLS</span><div class="key-row"><kbd>←</kbd><kbd>→</kbd><span>Change lanes</span></div><div class="key-row"><kbd>↑</kbd><kbd>SPACE</kbd><span>Jump barriers</span></div><div class="key-row"><kbd>↓</kbd><span>Slide under gates</span></div><div class="key-row"><kbd>P</kbd><span>Pause / resume</span></div><p class="runner-note">On touchscreens, use the buttons or swipe in the game area.</p></article>
+        <article class="card runner-info"><span class="eyebrow">ENGINEERING NOTE</span><h3>Local-first arcade</h3><p>This game runs in your browser using Canvas and JavaScript. It does not connect to a server or collect gameplay data.</p><a class="text-link" href="games.html">Explore security training games →</a></article>
+      </aside>
+    </div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><span>© <span data-year></span> CyberShield AI · Cyber Runner</span><span class="socials"><a href="games.html">Training games</a><a href="scanner.html">Scanner</a><a href="#top">Back to top ↑</a></span></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/main.js" defer></script><script src="assets/js/cyber-runner.js" defer></script>
+</body>
+</html>

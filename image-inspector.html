@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Local image file-property inspection; AI-generation classification is not yet available.">
+<meta name="theme-color" content="#061b14">
+<title>Image Authenticity Inspector | CyberShield AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/futuristic.css">
+<link rel="stylesheet" href="assets/css/command-center.css"><link rel="stylesheet" href="assets/css/consistent-theme.css">
+<style>
+.image-inspector{max-width:980px;margin:auto}.upload-zone{border:1px dashed rgba(90,245,190,.5);border-radius:18px;padding:34px;text-align:center;background:rgba(8,38,29,.55);cursor:pointer;transition:.2s}.upload-zone:hover,.upload-zone.drag{border-color:#55f0b5;background:rgba(10,65,47,.55)}.preview{max-width:100%;max-height:340px;border-radius:12px;display:none;margin:18px auto 0}.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:18px}.result-item{padding:15px;border:1px solid rgba(95,220,175,.2);border-radius:12px;background:rgba(5,28,21,.55)}.result-item strong{display:block;margin:6px 0}.muted-note{color:#a9c7bb;font-size:.9rem;line-height:1.6}.scan-status{margin-top:16px;min-height:28px}.hidden-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* Image Inspector upload layout: one centered drop target and one contained preview */
+.image-inspector .card:first-child { overflow:hidden; }
+.image-inspector .upload-zone {
+  box-sizing:border-box!important; display:flex!important; flex-direction:column!important;
+  align-items:center!important; justify-content:center!important; gap:10px!important;
+  width:100%!important; min-height:270px!important; padding:34px 24px!important;
+  margin:20px 0 0!important; border:1px dashed rgba(90,220,170,.42)!important;
+  border-radius:14px!important; background:#0d1915!important; text-align:center!important;
+  cursor:pointer!important; transition:border-color .18s,background .18s!important;
+}
+.image-inspector .upload-zone:hover,.image-inspector .upload-zone.drag,.image-inspector .upload-zone:focus-visible {
+  border-color:#36c995!important; background:#10221b!important;
+}
+.image-inspector .upload-zone h3 { margin:4px 0 0!important; font-size:1.08rem!important; font-weight:650!important; }
+.image-inspector .upload-zone p { margin:0!important; }
+.image-inspector .upload-icon {
+  width:58px!important;height:58px!important;display:grid!important;place-items:center!important;
+  border-radius:15px!important;background:rgba(16,185,129,.10)!important;
+  color:#55d6a4!important;font-size:1.55rem!important;
+}
+.image-inspector .upload-browse { min-height:38px!important;padding:8px 18px!important; }
+.image-inspector .upload-hint { color:#81978d!important;font-size:.75rem!important;letter-spacing:.04em!important; }
+.image-inspector .hidden-input { position:absolute!important;width:1px!important;height:1px!important;
+  padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important; }
+.image-inspector .preview-frame {
+  display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;
+  margin:18px auto 0;padding:14px;box-sizing:border-box;
+  border:1px solid rgba(90,220,170,.2);border-radius:12px;background:#0a1511;
+}
+.image-inspector .preview-frame[hidden] { display:none!important; }
+.image-inspector .preview { display:block!important;width:auto!important;max-width:100%!important;
+  max-height:420px!important;object-fit:contain!important;margin:0 auto!important;border-radius:8px!important; }
+.image-inspector .preview-caption { color:#9bb4a8;font-size:.8rem; }
+.image-inspector .scan-status { text-align:center; }
+@media(max-width:720px){.image-inspector .upload-zone{min-height:220px!important;padding:24px 16px!important}}
+
+</style>
+</head>
+<body id="top">
+<header class="topbar"><nav class="nav wrap" aria-label="Main navigation">
+<a class="brand" href="index.html" aria-label="CyberShield AI home"><img class="brand-logo" src="assets/img/cybershield-wordmark.svg" alt="CyberShield AI"></a>
+<div class="nav-links" id="navLinks"><div class="nav-primary" aria-label="Primary sections">
+<a class="nav-link primary" href="index.html">Home</a>
+<a class="nav-link primary nav-featured" href="sentry.html"><i class="fa-solid fa-robot"></i> Cyber Robo Simulator</a>
+<a class="nav-link primary" href="scanner.html">Security Center</a>
+<a class="nav-link primary" href="dashboard.html">Investigation Lab</a>
+<a class="nav-link primary" href="learn.html">Learn & Tools</a>
+<a class="nav-link primary nav-featured" href="automation.html"><i class="fa-solid fa-gears"></i> Automation</a>
+<a class="nav-link primary nav-direct-tool" href="arena.html"><i class="fa-solid fa-cube"></i> 3D Arena</a>
+<a class="nav-link primary" href="image-inspector.html"><i class="fa-regular fa-image"></i> Image Inspector</a>
+</div></div>
+<div class="nav-actions"><a class="btn btn-small nav-cta" href="scanner.html">Run a scan <i class="fa-solid fa-arrow-right"></i></a></div>
+</nav></header>
+<main>
+<section class="page-hero"><div class="wrap"><span class="eyebrow">CYBERSHIELD AI / IMAGE ANALYSIS</span><h1>Image <span class="accent">authenticity inspector.</span></h1><p>Inspect an image's file properties and available camera metadata locally in your browser. The classifier training pipeline is included, but a trained model must be created from your labeled dataset before AI-vs-real predictions are available.</p></div></section>
+<section class="section"><div class="wrap image-inspector">
+<div class="card">
+<span class="eyebrow">LOCAL FILE INSPECTION</span><h2>Choose an image to inspect</h2>
+<p class="muted-note">Your selected image is processed in this browser and is not uploaded by this page. Supported: JPG, PNG, WebP and other browser-readable image formats.</p>
+<p class="muted-note"><strong>Authenticity limits:</strong> This build performs local file-property checks only. It has no integrated, validated AI-image classifier; it will not guess whether an image is AI-generated or camera-made.</p>
+<div class="upload-zone" id="dropZone" role="button" tabindex="0" aria-label="Choose or drop an image">
+  <div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i></div>
+  <h3>Drop an image here</h3>
+  <p class="muted-note">or choose a file from your device</p>
+  <button class="btn btn-outline upload-browse" id="browseImage" type="button">Browse image</button>
+  <span class="upload-hint">JPG · PNG · WebP · GIF · BMP</span>
+</div>
+<input class="hidden-input" id="imageFile" type="file" accept="image/*">
+<div class="preview-frame" id="previewFrame" hidden><img id="preview" class="preview" alt="Selected image preview"><span class="preview-caption" id="previewCaption"></span></div>
+<div id="scanStatus" class="scan-status" role="status" aria-live="polite"></div>
+<div id="results" class="result-grid" hidden></div>
+<div id="conclusion" class="result-item" hidden style="margin-top:14px"></div>
+</div>
+<div class="card" style="margin-top:18px"><span class="eyebrow">IMPORTANT LIMITATION</span><h3>Can this prove an image is AI-generated or real?</h3><p class="muted-note">Not reliably yet. The project includes a training pipeline, but no trained weights or labeled dataset are bundled. Metadata can be removed or edited, and AI-generated images can contain camera-like metadata. Real photos can also be edited or exported without metadata. This inspector reports observable clues only; it does not assign a fake precision percentage or make a definitive authenticity claim. For high-stakes decisions, seek original files, provenance records, or a validated forensic review.</p></div>
+<div class="card" style="margin-top:18px"><span class="eyebrow">MODEL TRAINING</span><h3>Train the AI-vs-real classifier</h3><p class="muted-note">See <strong>IMAGE-MODEL-TRAINING-GUIDE.md</strong> and run <strong>TRAIN-IMAGE-MODEL-WINDOWS.bat</strong>. Supply a balanced, properly licensed dataset with separate train and validation folders. Training has not been performed yet.</p></div>
+</div></section>
+</main>
+<script>
+(() => {
+ const input=document.getElementById('imageFile'), zone=document.getElementById('dropZone');
+ const preview=document.getElementById('preview'), status=document.getElementById('scanStatus');
+ const browse=document.getElementById('browseImage'), frame=document.getElementById('previewFrame'), caption=document.getElementById('previewCaption');
+ const results=document.getElementById('results'), conclusion=document.getElementById('conclusion');
+ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function item(label,value,detail){return `<div class="result-item"><span class="eyebrow">${esc(label)}</span><strong>${esc(value)}</strong><span class="muted-note">${esc(detail)}</span></div>`;}
+ function inspect(file){
+  if(!file || !file.type.startsWith('image/')){status.textContent='Please select a supported image file.';return;}
+  const url=URL.createObjectURL(file); if(preview.dataset.objectUrl) URL.revokeObjectURL(preview.dataset.objectUrl); preview.dataset.objectUrl=url; preview.src=url; frame.hidden=false; caption.textContent=`${file.name} · ${(file.size/1024/1024).toFixed(2)} MB`;
+  status.textContent='Inspecting file properties locally…'; results.hidden=true; conclusion.hidden=true;
+  const img=new Image();
+  img.onload=()=>{
+   const bytes=file.size, dims=`${img.naturalWidth} × ${img.naturalHeight}`;
+   const format=file.type||'Unknown'; const modified=file.lastModified?new Date(file.lastModified).toLocaleString():'Not available';
+   const cards=[
+    item('File format',format,'The browser-reported MIME type.'),
+    item('Image dimensions',dims,'Pixel dimensions of the decoded image.'),
+    item('File size',bytes<1024*1024?`${(bytes/1024).toFixed(1)} KB`:`${(bytes/1024/1024).toFixed(2)} MB`,'Size alone does not establish authenticity.'),
+    item('Last modified',modified,'This is file-system metadata and can change when copied or edited.')
+   ];
+   // Browser File API does not expose EXIF reliably; avoid inventing camera metadata findings.
+   cards.push(item('Camera / EXIF metadata','Not assessed','This browser-only check does not reliably parse embedded EXIF metadata.'));
+   results.innerHTML=cards.join(''); results.hidden=false;
+   conclusion.innerHTML='<span class="eyebrow">ASSESSMENT</span><strong>Inconclusive — authenticity not determined</strong><p class="muted-note">These file properties cannot reliably distinguish an AI-generated image from a genuine camera photo. No AI-vs-real verdict is available: this build has no integrated, independently validated image-classification model. File metadata and appearance alone are not reliable proof.</p>';
+   conclusion.hidden=false; status.textContent='Inspection complete. No image was uploaded by this page.';
+  };
+  img.onerror=()=>{status.textContent='The browser could not decode this image.';};
+  img.src=url;
+ }
+ browse.addEventListener('click',e=>{e.stopPropagation();input.click();});
+ zone.addEventListener('click',e=>{if(e.target!==browse)input.click();});
+ zone.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();input.click();}});
+ input.addEventListener('change',()=>inspect(input.files[0]));
+ ['dragenter','dragover'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.classList.add('drag');}));
+ ['dragleave','drop'].forEach(ev=>zone.addEventListener(ev,e=>{e.preventDefault();zone.classList.remove('drag');}));
+ zone.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f){inspect(f);}});
+})();
+</script>
+</body></html>

@@ -1,0 +1,30 @@
+CYBERSHIELD AI DESKTOP — VERIFIED SOURCE PACKAGE
+Version: 2.2.6
+
+WHAT IS INCLUDED
+- Electron Windows desktop application source
+- Original CyberShield AI interface and branding assets
+- Scanner, quarantine/restore, PC health utilities, Gmail Shield, AI Co-Pilot integration,
+  Cyber Academy, games, 3D Cyber Arena, SENTRY companion and related modules
+- Windows development and installer build scripts
+
+VALIDATION PERFORMED IN THE PACKAGING ENVIRONMENT
+- npm test: PASS (27 tests, 0 failures)
+- npm run check: PASS (JavaScript syntax checks)
+- Internal script/stylesheet references: covered by passing project test
+
+IMPORTANT LIMITATIONS
+- This is a verified source ZIP, not a compiled or signed Windows installer.
+- A Windows .exe must be built on Windows using BUILD-DESKTOP-WINDOWS.bat.
+- The AI Co-Pilot requires Ollama and a separately installed model; no model is bundled.
+- Windows-only integrations need Windows and the permissions documented by the app.
+- Heuristic detections are indicators for review, not proof that a file is malicious.
+- The 14-feature 2.3.0 expansion has NOT been represented as completed in this package.
+
+QUICK START
+1. Extract the ZIP to a normal folder.
+2. Install Node.js LTS.
+3. Run RUN-DESKTOP-DEV-WINDOWS.bat.
+4. To build the Windows installer, run BUILD-DESKTOP-WINDOWS.bat and check dist/.
+
+For AI setup, see README-AI-MODEL.md and SETUP-AI-MODEL-WINDOWS.bat.

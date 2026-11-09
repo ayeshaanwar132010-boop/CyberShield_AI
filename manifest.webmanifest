@@ -1,0 +1,18 @@
+{
+  "name": "CyberShield AI",
+  "short_name": "CyberShield AI",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#04120d",
+  "theme_color": "#04120d",
+  "description": "Local-first cybersecurity learning, desktop tools, AI Co-Pilot and arcade training games.",
+  "icons": [
+    {
+      "src": "assets/img/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "version": "2.2.3"
+}

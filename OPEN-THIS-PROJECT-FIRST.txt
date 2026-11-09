@@ -1,0 +1,12 @@
+CYBERSHIELD AI 2.2.7 — UPDATED SOURCE
+
+IMPORTANT: Extract this ZIP. Open the folder named CyberShieldAI-Windows-Project.
+Do not run an older extracted copy. In that folder, open PowerShell and run:
+
+  npm install
+  npm start
+
+The updated homepage is index.html. Direct pages: trace.html and arena.html.
+To build Windows installer + portable package: npm run dist
+
+This ZIP is source code, not a prebuilt installer.

@@ -1,0 +1,30 @@
+CYBERSHIELD AI DESKTOP APP — WINDOWS
+====================================
+
+This package contains the Electron desktop application source and the Windows
+scripts needed to run it or build an installer.
+
+FASTEST WAY TO OPEN THE APP
+1. Install Node.js LTS from https://nodejs.org if it is not already installed.
+2. Extract this ZIP to a normal folder (not inside the ZIP preview).
+3. Double-click RUN-DESKTOP-DEV-WINDOWS.bat.
+4. On first run, npm downloads Electron and project dependencies. Internet is
+   required for this setup. Keep the command window open while the app runs.
+
+BUILD A WINDOWS INSTALLER (.exe)
+1. Double-click BUILD-DESKTOP-WINDOWS.bat.
+2. Wait for npm install and the build to finish.
+3. Find the installer and portable app in the newly created dist folder.
+
+AI CO-PILOT
+The local AI Co-Pilot needs Ollama installed and running. The rest of the app
+can be explored without AI. The AI model is a separate, multi-GB download and
+is not bundled in this ZIP.
+
+IMPORTANT
+- This is a desktop-app project package, not a precompiled Windows installer.
+- I cannot verify Windows installer execution from this environment.
+- Review Windows security prompts carefully; unsigned builds may show a
+  SmartScreen warning.
+- Antivirus operations depend on supported Windows features and permissions.
+  Do not treat demo or heuristic warnings as proof that a file is malicious.

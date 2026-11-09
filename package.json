@@ -1,0 +1,55 @@
+{
+  "name": "cybershield-ai-desktop",
+  "version": "2.2.8",
+  "description": "CyberShield AI Windows desktop security toolkit with refined dark and light themes, red security branding, original modules, and local AI companion.",
+  "author": "CyberShield AI",
+  "main": "electron/main.js",
+  "scripts": {
+    "prepare-assets": "node electron/copy-three.js",
+    "start": "npm run prepare-assets && electron .",
+    "dist": "npm run prepare-assets && electron-builder --win nsis portable",
+    "serve": "node electron/server.js",
+    "check": "node --check electron/gmail.js && node --check electron/main.js && node --check electron/preload.js && node --check electron/server.js && node --check assets/js/main.js && node --check assets/js/games.js && node --check assets/js/cyber-runner.js && node --check assets/js/scanner.js && node --check assets/js/arena.js && node --check assets/js/profile.js && node --check assets/js/extras.js && node --check assets/js/fx.js && node --check assets/js/quiz.js && node --check assets/js/antivirus.js && node --check assets/js/sentry.js && node --check assets/js/automation.js && node --check assets/js/pc-twin.js && node --check assets/js/missions.js && node --check assets/js/ai-studio.js && node --check electron/main.js",
+    "test": "node --test test/av.test.js test/ipc.test.js test/project.test.js"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "three": "0.128.0"
+  },
+  "build": {
+    "appId": "com.cybershield.ai.desktop",
+    "productName": "CyberShield AI",
+    "files": [
+      "*.html",
+      "assets/**/*",
+      "electron/**/*",
+      "package.json",
+      "sw.js",
+      "manifest.webmanifest",
+      "build/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/cybershield-app-icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/cybershield-app-icon.ico",
+      "uninstallerIcon": "build/cybershield-app-icon.ico",
+      "installerHeaderIcon": "build/cybershield-app-icon.ico"
+    }
+  },
+  "dependencies": {
+    "imapflow": "^1.0.181",
+    "mailparser": "^3.7.4",
+    "nodemailer": "^7.0.10"
+  }
+}

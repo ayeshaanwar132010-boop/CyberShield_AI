@@ -1,0 +1,22 @@
+CYBERSHIELD AI — WINDOWS BRANDING INTEGRATION
+
+The supplied logo is now integrated into this project source:
+- build/cybershield-app-icon.ico: Electron window and Windows executable icon
+- build/cybershield-app-icon.png: square icon preview
+- build/cybershield-logo-horizontal.png: full horizontal logo for in-app branding
+
+Changes:
+- Electron BrowserWindow now uses the CyberShield AI .ico.
+- Windows AppUserModelID is set to the CyberShield AI application ID.
+- electron-builder Windows executable, NSIS installer, uninstaller and installer header use the same .ico.
+- build/**/* is included in packaged application files.
+
+To build on Windows:
+1. Extract this project.
+2. Open PowerShell in the CyberShieldAI-Windows-Project folder.
+3. Run: npm install
+4. Run: npm run check
+5. Run: npm test
+6. Run: npm run dist
+
+This is an integrated source package, not a prebuilt installer. The installer must be rebuilt to apply the new icon. Windows may cache old shortcut icons; remove old pinned shortcuts and create a fresh shortcut after reinstalling.
